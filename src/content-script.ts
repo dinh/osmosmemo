@@ -71,26 +71,27 @@ function injectContentScript() {
   }
 
   function getPageTitle() {
-    let title = document.querySelector(`meta[property="og:title"]`)?.getAttribute("content")?.trim();
+      let title;
 
-    if (!title) {
-      title = document.querySelector(`meta[name="twitter:title"]`)?.getAttribute("content")?.trim();
+      if (document.location.href.includes("youtube.com/channel")) {
+        document.querySelector("#text-container").innerText
+      } else if (document.location.href.includes("youtube.com")) {
+        title = document.querySelector("#container > h1").innerText;
+      } else {
+        title = document.querySelector(`meta[property="og:title"]`)?.getAttribute("content")?.trim();
+      }
+
+      if (!title) {
+        title = document.querySelector(`meta[name="twitter:title"]`)?.getAttribute("content")?.trim();
+      }
+      if (!title) {
+        title = document.querySelector("title")?.innerText?.trim();
+      }
+      if (!title) {
+        title = document.querySelector("h1")?.innerText?.trim();
+      }
+      if (!title) {
+        title = "";
+      }
+      return title;
     }
-
-    if (!title) {
-      title = document.querySelector("title")?.innerText?.trim();
-    }
-
-    if (!title) {
-      title = document.querySelector("h1")?.innerText?.trim();
-    }
-
-    if (!title) {
-      title = "";
-    }
-
-    return title;
-  }
-}
-
-injectContentScript();
