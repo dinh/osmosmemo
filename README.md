@@ -1,3 +1,4 @@
+- [osmoscraft/osmosmemo: Turn GitHub into a bookmark manager](https://github.com/osmoscraft/osmosmemo) #bookmark#knowledge
 [![image](./docs/media/osmosmemo-square-badge.svg)](#get-started)
 
 # osmos::memo
